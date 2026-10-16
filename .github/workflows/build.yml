@@ -33,11 +33,11 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Add Android Platform (Skip if exists)
-        run: npx @capacitor/cli add android || true
+      - name: Add Android Platform
+        run: npx cap add android || true
 
       - name: Sync Android Platform
-        run: npx @capacitor/cli sync android
+        run: npx cap sync android
 
       - name: Build APK with Gradle
         run: |

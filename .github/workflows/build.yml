@@ -1,3 +1,5 @@
+name: Build Android APK
+
 on:
   push:
     branches: [ main ]
@@ -17,10 +19,10 @@ jobs:
           node-version: 20
 
       - name: Install Dependencies
-        run: npm install --legacy-peer-deps
+        run: npm install --legacy-peer-deps --force
 
       - name: Install Capacitor Android Package
-        run: npm install @capacitor/android --force
+        run: npm install @capacitor/android --legacy-peer-deps --force
 
       - name: Build Web App
         run: npm run build
@@ -31,11 +33,14 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Add Android Platform
-        run: npx cap add android || true
-
-      - name: Sync Capacitor Android
-        run: npx @capacitor/cli sync android
+      - name: Add or Sync Android Platform
+        run: |
+          if [ ! -d "android" ]; then
+            npx cap add android
+          else
+            echo "Android platform already exists, syncing..."
+            npx cap sync android
+          fi
 
       - name: Build APK with Gradle
         run: |

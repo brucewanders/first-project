@@ -1,0 +1,6 @@
+{
+  "name": "Centra Personal Finance & Budget Tracker",
+  "description": "A secure, passcode-protected personal spending and budget manager to track expenses, airtime, everyday purchases, and income with customizable categories.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

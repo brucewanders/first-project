@@ -31,7 +31,7 @@ jobs:
           java-version: '17'
 
       - name: Sync Capacitor Android
-        run: npx cap sync android
+        run: npx @capacitor/cli sync android
 
       - name: Build APK with Gradle
         run: |
